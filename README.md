@@ -1,6 +1,6 @@
 # Fiches d'exercice Lean pour l'UE Logique et Preuve Assistée
 
-Démarrage rapide (de préférence sur une machine de l'université) :
+## Démarrage rapide (sur une machine de l'université)
 
 1.  Ouvrez un terminal et taper les commandes suivantes :
 
@@ -34,3 +34,15 @@ souligné en orange). Baladez votre curseur et regardez ce qui se passe dans la
 fenêtre "Infoview" à droite...
 
 C'est parti ! Bon courage !
+
+## Utiliser votre ordinateur personnel
+
+Vous pouvez aussi installer Lean sur votre machine personnelle. La procédure est
+d'installer VSCode (ou VSCodium), puis l'extension Lean 4. Ensuite, clonez le
+dépôt Git comme indiqué ci-dessus et ouvrez-le dans VSCode, mais cette fois-ci
+suivez les instructions d'installation plutôt que de les ignorer.
+
+> **Attention :** si vous choisissez de travailler sur votre propre machine,
+vous ne serez pas prioritaire pour recevoir de l'aide à l'installation ou du
+service après-vente...
+
