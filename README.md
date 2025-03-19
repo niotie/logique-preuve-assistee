@@ -17,7 +17,7 @@
     - À la question *"CMakeLists.txt was not found in the root of the folder "logique-preuve-assistee". How would you like to proceed?"*, répondez *"Dont'show again"* ("Ne plus montrer cela").
     - À la question *"Configure projects on opening?"* répondez *"Not this workspace"* ("Pas pour ce projet").
 
-3.  Ouvrez le document `EnoncesLPA/TP1LogiqueProp.lean`, VSCode vous embête encore. À la fenêtre surgissante qui s'affiche, répondez *"Cancel"* ("Annuler").
+3.  Ouvrez le document `EnoncesLPA/TP1LogiqueProp.lean`, VSCode vous embête encore. À la fenêtre surgissante qui s'affiche (*"Lean's version manager Elan is not installed. This means..."*), répondez *"Cancel"* ("Annuler").
 
 4.  Patientez pendant que VSCode démarre l'extension Lean, puis cliquez sur le bouton $\forall$ en haut à droite de la fenêtre, et sélectionnez l'option *"Infoview : Toggle Infoview"*, ou saisissez le raccourci `Ctrl-Shift-Enter`.
 
