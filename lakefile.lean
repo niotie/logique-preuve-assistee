@@ -7,6 +7,6 @@ package "enonces-LPA" where
 lean_lib «EnoncesLPA» where
   -- add library configuration options here
 
-@[default_target]
-lean_exe "enonces-lpa" where
-  root := `Main
+-- @[default_target]
+-- lean_exe "enonces-lpa" where
+--   root := `Main
