@@ -330,15 +330,15 @@ section exercice  -- Trouver l'intrus !
 
 -- L'une de ces propriétés est fausse. Démontrez les autres.
 
-theorem sub_union_of_sub_or_sub {r s t : Set α} (h : r ⊆ s ∨ r ⊆ t) : r ⊆ s ∪ t := by sorry
+-- theorem sub_union_of_sub_or_sub {r s t : Set α} (h : r ⊆ s ∨ r ⊆ t) : r ⊆ s ∪ t := by
 
-theorem sub_sub_of_sub_union {r s t : Set α} (h : r ⊆ s ∪ t) : r ⊆ s ∨ r ⊆ t := by sorry
+-- theorem sub_sub_of_sub_union {r s t : Set α} (h : r ⊆ s ∪ t) : r ⊆ s ∨ r ⊆ t := by
 
-theorem sub_inter_of_sub_and_sub {r s t : Set α} (h : r ⊆ s ∧ r ⊆ t) : r ⊆ s ∩ t := by sorry
+-- theorem sub_inter_of_sub_and_sub {r s t : Set α} (h : r ⊆ s ∧ r ⊆ t) : r ⊆ s ∩ t := by
 
-theorem sub_of_sub_inter_left {r s t : Set α} (h : r ⊆ s ∩ t) : r ⊆ s := by sorry
+-- theorem sub_of_sub_inter_left {r s t : Set α} (h : r ⊆ s ∩ t) : r ⊆ s := by
 
-theorem sub_of_sub_inter_right {r s t : Set α} (h : r ⊆ s ∩ t) : r ⊆ t := by sorry
+-- theorem sub_of_sub_inter_right {r s t : Set α} (h : r ⊆ s ∩ t) : r ⊆ t := by
 
 end exercice
 
