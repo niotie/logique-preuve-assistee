@@ -318,6 +318,14 @@ theorem iff_rw_recip (hpq : p ↔ q) (h : p → r ∨ ¬ (p ∧ ¬r)) : q → r 
   -- utiliser `rewrite`
   sorry
 
+-- Réflexivité
+theorem iff_refl : p ↔ p := by
+  sorry
+
+-- Transitivité
+theorem iff_trans (h : p ↔ q) (h' : q ↔ r) : p ↔ r := by
+  sorry
+
 end iff
 
 
