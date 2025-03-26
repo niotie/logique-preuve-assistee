@@ -154,7 +154,7 @@ theorem imp_or_of_imp_or_imp (h : (p → q) ∨ (p → r)) : p → q ∨ r := by
   sorry
 
 theorem imp_or_imp_of_imp_or (h : p → q ∨ r) : (p → q) ∨ (p → r) := by
-  -- nécessite by_cases !
+  -- nécessite by_cases (*tiers exclu*) !
   sorry
 
 end disjunction
@@ -206,7 +206,7 @@ theorem contradiction (hp : p) (hnp : ¬ p) : q := by
   sorry
 
 -- entraînement : réessayer sans la tactique `contradiction`
--- (indice : essayer `specialize`, `apply false_elim`, `have`...)
+-- (indice : essayer `exfalso`, `specialize`, `apply false_elim`, `have`...)
 example (hp : p) (hnp : ¬ p) : q := by
   sorry
 
@@ -306,7 +306,7 @@ theorem iff_direct (h : p ↔ q) (hp : p) : q := by
   sorry
 
 -- Utiliser un "si et seulement si" : sens réciproque
-theorem iff_recip (h : p ↔ q) (hp : q) : p := by
+theorem iff_recip (h : p ↔ q) (hq : q) : p := by
   sorry
 
 -- Utiliser un "si et seulement si" : réécriture
@@ -365,7 +365,7 @@ theorem not_not : ¬ ¬ p ↔ p := by
 theorem not_and : ¬ (p ∧ q) ↔ ¬ p ∨ ¬ q := by
   sorry
 
-theorem not_or : ¬ (p ∨ q) → ¬ p ∧ ¬ q := by
+theorem not_or : ¬ (p ∨ q) ↔ ¬ p ∧ ¬ q := by
   sorry
 
 theorem contrapose : (p → q) ↔ (¬ q → ¬ p) := by
