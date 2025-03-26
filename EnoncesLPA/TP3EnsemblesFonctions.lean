@@ -60,14 +60,6 @@ theorem ext {a b : Set α} (h : ∀ (x : α), x ∈ a ↔ x ∈ b) : a = b := by
   apply propext
   exact h x
 
--- Une autre manière de voir l'égalité d'ensemble
--- (conséquence de la précédente)
-theorem double_inclusion {a b : Set α} (h : a ⊆ b ∧ b ⊆ a) : a = b := by
-  ext x  -- fait appel au théorème qui précède
-  constructor
-  . apply h.left
-  . apply h.right
-
 end egalite
 
 
