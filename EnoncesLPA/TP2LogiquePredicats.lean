@@ -151,6 +151,8 @@ end swap_quantif
 
 section not_quantif
 
+-- Trois de ces théorèmes nécessitent by_cases ou not_not_elim (une ou plusieurs fois !)
+
 theorem not_exists : (¬ ∃ x, P x) ↔ (∀ x, ¬ P x) := by
   sorry
 
