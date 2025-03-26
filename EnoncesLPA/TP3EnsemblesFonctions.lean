@@ -199,6 +199,8 @@ end Set
 end definitions
 
 
+open Set
+
 section prop_ensembles  -- # Propriétés relatives aux ensembles
 
 variable  {r s t : Set α}
