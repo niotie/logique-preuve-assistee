@@ -107,8 +107,8 @@ theorem and_exists_of_exists_and :
 
 -- La réciproque est fausse !
 -- Essayer de la prouver, voir où cela échoue et chercher un contre-exemple
-example : (∃ x, P x) ∧ (∃ x, Q x) → (∃ x, P x ∧ Q x) := by
-  sorry
+-- example : (∃ x, P x) ∧ (∃ x, Q x) → (∃ x, P x ∧ Q x) := by
+--   fail
 
 end exists_and
 
