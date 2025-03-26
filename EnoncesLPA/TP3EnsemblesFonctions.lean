@@ -52,13 +52,19 @@ end inclusion
 section egalite  -- ## Égalité entre ensembles
 
 -- Magie noire ! Pas si facile de définir l'égalité d'ensembles
-@[ext]
 theorem ext {a b : Set α} (h : ∀ (x : α), x ∈ a ↔ x ∈ b) : a = b := by
   -- les deux ensembles sont représentés par la même fonction
   funext x
   -- deux propriétés équivalentes sont considérées comme égales
   apply propext
   exact h x
+
+theorem ext_iff {a b : Set α} : (∀ (x : α), x ∈ a ↔ x ∈ b) ↔ a = b := by
+  constructor
+  . exact ext
+  . intro hab x
+    rewrite [hab]
+    apply iff_refl
 
 end egalite
 
