@@ -2,7 +2,7 @@
 
 ## Démarrage rapide (sur une machine de l'université)
 
-1.  Ouvrez un terminal et taper les commandes suivantes :
+1.  Ouvrez un terminal et tapez les commandes suivantes :
 
     ```shell
     $ lean
