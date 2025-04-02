@@ -127,8 +127,8 @@ theorem iff_forall_of_forall_iff (h : ∀ x, P x ↔ Q x) :
     (∀ x, P x) ↔ (∀ x, Q x) := by
   sorry
 
-theorem iff_exists_of_forall_iff (h : ∀ x, P x → Q x) :
-    (∃ x, P x) → (∃ x, Q x) := by
+theorem iff_exists_of_forall_iff (h : ∀ x, P x ↔ Q x) :
+    (∃ x, P x) ↔ (∃ x, Q x) := by
   sorry
 
 theorem exists_imp : (∃ x, P x) → r ↔ ∀ x, P x → r := by
