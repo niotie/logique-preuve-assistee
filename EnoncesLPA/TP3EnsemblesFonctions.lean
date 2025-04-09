@@ -214,7 +214,7 @@ theorem subset_refl : s ⊆ s := by
 theorem subset_antisymm {s t : Set α} (h : s ⊆ t) (h' : t ⊆ s) : s = t := by
   sorry
 
-theorem subset_trans (hab : r ⊆ s) (hbc : s ⊆ t) : r ⊆ t := by
+theorem subset_trans (hrs : r ⊆ s) (hst : s ⊆ t) : r ⊆ t := by
   sorry
 
 end subset
