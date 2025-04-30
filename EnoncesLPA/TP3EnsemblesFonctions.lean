@@ -478,17 +478,6 @@ section image_preimage  -- ## Image de la pré-image d'un ensemble
 end image_preimage
 
 
-section inclusions  -- ## Inclusion des images ou des préimages
-
-theorem image_sub_of_sub (h : s ⊆ s') : f '' s ⊆ f '' s' := by
-  sorry
-
-theorem preimage_sub_of_sub (h : t ⊆ t') : f ⁻¹' t ⊆ f ⁻¹' t' := by
-  sorry
-
-end inclusions
-
-
 section union  -- ## Image et pré-image d'une union
 
 theorem image_union : f '' (s ∪ s') = f '' s ∪ f '' s' := by
