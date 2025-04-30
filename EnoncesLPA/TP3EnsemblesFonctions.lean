@@ -472,7 +472,7 @@ section image_preimage  -- ## Image de la pré-image d'un ensemble
 -- theorem sub_image_preimage : t ⊆ f '' (f ⁻¹' t) := by
 --   fail
 
--- theorem image_preimage_sub : f '' (f ⁻¹' (B)) ⊆ B := by
+-- theorem image_preimage_sub : f '' (f ⁻¹' (t)) ⊆ t := by
 --   fail
 
 end image_preimage
