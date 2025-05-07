@@ -166,16 +166,16 @@ theorem add_zero : n + zero = n := by
   | succ m' ih => sorry
 
 -- Commutativité
--- example : m + n = n + m := by
---   induction m with
---   | zero =>
---       rw [add_zero, zero_add]
---   | succ m' ih =>
---       rw [succ_add, ih]
---       -- coincé !
---       fail
+example : m + n = n + m := by
+  induction m with
+  | zero =>
+      rw [add_zero, zero_add]
+  | succ m' ih =>
+      rw [succ_add, ih]
+      -- coincé !
+      sorry
 
--- Nouvel essai : avec un nouvel lemme
+-- Nouvel essai : avec un nouveau lemme
 theorem add_succ : m + n.succ = (m + n).succ := by
   sorry
 
