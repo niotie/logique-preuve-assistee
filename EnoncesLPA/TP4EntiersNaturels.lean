@@ -2,8 +2,6 @@ import EnoncesLPA.TP3EnsemblesFonctions
 
 namespace Local
 
-section definitions  -- # Définition des entiers "à la Peano"
-
 -- Définition inductive des entiers de Peano
 inductive Nat
 | zero : Nat
@@ -332,20 +330,26 @@ theorem lt_iff_le_and_ne (m n : Nat) : m < n ↔ m ≤ n ∧ m ≠ n := by
 theorem lt_succ_iff {m n : Nat} : m < n.succ ↔ m ≤ n := by
   sorry
 
-theorem not_lt {m n : Nat} : m ≤ n ↔ ¬ n < m := by
+theorem not_lt {m n : Nat} : ¬ n < m ↔ m ≤ n  := by
   sorry
 
-theorem not_le {m n : Nat} : m < n ↔ ¬ n ≤ m := by
+theorem not_le {m n : Nat} : ¬ n ≤ m ↔ m < n := by
   sorry
 
 
--- ## Propriétés relatives à zero et succ
+-- ## Propriétés relatives à zero
 
 theorem zero_le {m : Nat} : zero ≤ m := by
   sorry
 
-theorem le_zero {m : Nat} (h : le m zero) : m = zero := by
+theorem le_zero (m : Nat) : m ≤ zero ↔ m = zero := by
   sorry
+
+theorem ne_zero_iff_zero_lt : m ≠ zero ↔ zero < m := by
+  sorry
+
+
+-- ## Propriétés relatives à succ
 
 theorem le_of_succ_le {m n : Nat} : m.succ ≤ n → m ≤ n := by
   sorry
@@ -357,6 +361,15 @@ theorem succ_le_succ_of_le {m n : Nat} : m ≤ n → m.succ ≤ n.succ := by
   sorry
 
 theorem not_succ_le_self {n : Nat} : ¬ n.succ ≤ n := by
+  sorry
+
+
+-- ## Propriétés relatives à pred
+
+theorem pred_lt {n : Nat} : n ≠ zero → n.pred < n := by
+  sorry
+
+theorem pred_eq_self_iff : n = n.pred ↔ n = zero := by
   sorry
 
 
@@ -372,6 +385,10 @@ theorem le_antisymm' {m n : Nat} : m ≤ n → n ≤ m → m = n := by
 
 -- Transitivité
 theorem le_trans {m n k : Nat} : m ≤ n → n ≤ k → m ≤ k := by
+  sorry
+
+-- Variantes de la transitivité
+theorem lt_of_lt_of_le {m n k : Nat} : m < n → n ≤ k → m < k := by
   sorry
 
 
@@ -431,7 +448,7 @@ theorem lt_wfRel (A : Nat → Prop) (h : ∃ (n : Nat), A n) :
       sorry
 
 
--- La propriété de l'ordre bien fondé permet de démontrer la propriété d'induction
+-- La propriété de l'élément minimal permet de démontrer la propriété d'induction
 example :
     (∀ (A : Nat → Prop), (∃ n, A n) → ∃ m, A m ∧ ∀ (n : Nat), A n → m ≤ n) →
     (∀ (A : Nat → Prop), A zero → (∀ n, A n → A n.succ) → ∀ n, A n) :=  by
