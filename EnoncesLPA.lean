@@ -3,4 +3,4 @@
 import EnoncesLPA.TP1LogiqueProp
 import EnoncesLPA.TP2LogiquePredicats
 import EnoncesLPA.TP3EnsemblesFonctions
-import EnoncesLPA.TP4Entiers
+import EnoncesLPA.TP4EntiersNaturels
