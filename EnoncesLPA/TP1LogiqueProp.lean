@@ -1,5 +1,4 @@
 namespace Local
-set_option linter.unusedVariables false
 
 variable {p q r : Prop}
 
@@ -8,19 +7,20 @@ section hypotheses
 
 -- Utiliser une hypothèse du contexte
 example (h : p) : p := by
-  sorry
+  exact h
 
 -- Une instance particulière de l'exemple précédent
 example {x : Nat} (h : x ≤ 10) : x ≤ 10 := by
-  sorry
+  exact h
 
 -- Choisir la bonne hypothèse !
 example (h1 : p) (h2 : q) (h3 : r) : q := by
-  sorry
+  exact h2
 
 -- Une instance particulière de l'exemple précédent
 example (h1 : x ≤ 10) (h2 : x ≠ 0) (h3 : x ≠ y) : x ≠ 0 := by
-  sorry
+  -- exact h2
+  assumption
 
 end hypotheses
 
@@ -29,19 +29,36 @@ section implication
 
 -- Démontrer une implication
 theorem imp_refl : p → p := by
-  sorry
+  intro toto
+  exact toto
 
 -- Utiliser une application (modus ponens)
 theorem modus_ponens (h1 : p → q) (h2 : p) : q := by
-  sorry
+  apply h1
+  exact h2
+  -- ou :
+  -- specialize h1 h2
+  -- exact h1
+  -- ou :
+  -- have h3 : q := h1 h2
+  -- exact h3
 
 -- On combine les deux
 theorem imp_trans (hpq : p → q) (hqr : q → r) : p → r := by
-  sorry
+  intro hp
+  apply hqr
+  apply hpq
+  exact hp
+  -- ou, vers l'avant :
+  -- intro hp
+  -- have hq : q := modus_ponens hpq hp
+  -- have hr : r := modus_ponens hqr hq
+  -- exact hr
 
 -- Pour s'exercer : si q est vraie alors n'importe quoi implique q
 example (hq : q) : p → q := by
-  sorry
+  intro
+  exact hq
 
 end implication
 
@@ -50,7 +67,9 @@ section conjunction
 
 -- Démontrer une conjonction
 theorem and_intro (hp : p) (hq : q) : p ∧ q := by
-  sorry
+  constructor
+  . exact hp
+  . exact hq
 
 -- entraînement
 example (hp : p) (hq : q) (hr : r) : p ∧ q ∧ r := by
@@ -62,11 +81,15 @@ example (hp : p) (hq : q) (hr : r) : (p ∧ q) ∧ r := by
 
 -- Utiliser une conjonction (version gauche)
 theorem and_elim_left (h : p ∧ q) : p := by
-  sorry
+  rcases h with ⟨hp, hq⟩
+  exact hp
+
+example (h : p ∧ q) : p := by
+  exact h.left
 
 -- Utiliser une conjonction (version droite)
 theorem and_elim_right (h : p ∧ q) : q := by
-  sorry
+  exact h.right
 
 -- Commutativité de la conjonction
 theorem and_comm_1 (h : p ∧ q) : q ∧ p := by
@@ -82,7 +105,10 @@ theorem and_assoc_2 (h : (p ∧ q) ∧ r) : p ∧ (q ∧ r) := by
 
 -- entraînement (utiliser des théorèmes précédents !)
 example (h : p ∧ q ∧ r) : (r ∧ p) ∧ q := by
-  sorry
+  apply and_assoc_1
+  apply and_comm_1
+  apply and_assoc_1
+  exact h
 
 -- Conjonction et implication (sens 1)
 theorem and_imp_1 (h : p ∧ q → r) : p → q → r := by
