@@ -1,8 +1,8 @@
 {
     "cmake.configureOnOpen": false,
-    "lean4.logging.dir": "./logs",
-    "lean4.logging.enabled": true,
-    "lean4.trace.server": "messages",
+    //"lean4.logging.dir": "./logs",
+    //"lean4.logging.enabled": true,
+    //"lean4.trace.server": "messages",
     "lean4.logging.allowedMethods": [
         "textDocument/didOpen",
         "textDocument/didChange",

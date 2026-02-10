@@ -8,14 +8,13 @@
     $ lean
     $ git clone https://github.com/niotie/logique-preuve-assistee.git
     $ export PATH=$PATH:/usr/local/apps/elan/bin
-    $ code logique-preuve-assistee
+    $ codium logique-preuve-assistee
     ```
 
 2.  VSCode vous embête :
 
-    - À la question *Would you like to configure project "logique-preuve-assistee"?*, répondez *"Not now"* ("Pas maintenant").
-    - À la question *"CMakeLists.txt was not found in the root of the folder "logique-preuve-assistee". How would you like to proceed?"*, répondez *"Dont'show again"* ("Ne plus montrer cela").
-    - À la question *"Configure projects on opening?"* répondez *"Not this workspace"* ("Pas pour ce projet").
+    À la question *Do you trust the authors of the files in this folder?* (« Faites-vous confiance aux auteurs des fichiers de ce répertoire ? ») répondez *Yes, I trust the authors* (« Oui, je fais confiance aux auteurs »).
+
 
 3.  Ouvrez le document `EnoncesLPA/TP1LogiqueProp.lean`, VSCode vous embête encore. À la fenêtre surgissante qui s'affiche (*"Lean's version manager Elan is not installed. This means..."*), répondez *"Cancel"* ("Annuler").
 
