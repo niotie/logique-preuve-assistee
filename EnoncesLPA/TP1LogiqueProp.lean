@@ -137,19 +137,27 @@ section disjunction
 
 -- Démontrer une disjonction : preuve du membre gauche
 theorem or_intro_left (hp : p) : p ∨ q := by
-  sorry
+  left
+  exact hp
 
 -- Démontrer une disjonction : preuve du membre droit
 theorem or_intro_right (hq : q) : p ∨ q := by
-  sorry
+  right
+  exact hq
 
 -- Utiliser une disjonction
 theorem or_elim (h : p ∨ q) (hpr : p → r) (hqr : q → r) : r := by
-  sorry
+  rcases h with (h1 | h2)
+  . apply hpr
+    exact h1
+  . apply hqr
+    exact h2
 
 -- Commutativité de la disjonction
 theorem or_comm_1 (h : p ∨ q) : q ∨ p := by
-  sorry
+  rcases h with (hp | hq)
+  . right; exact hp
+  . left; exact hq
 
 -- Associativité de la disjonction (sens 1)
 theorem or_assoc_1 (h : p ∨ q ∨ r) : (p ∨ q) ∨ r := by
@@ -181,7 +189,16 @@ theorem imp_or_of_imp_or_imp (h : (p → q) ∨ (p → r)) : p → q ∨ r := by
 
 theorem imp_or_imp_of_imp_or (h : p → q ∨ r) : (p → q) ∨ (p → r) := by
   -- nécessite by_cases (*tiers exclu*) !
-  sorry
+  by_cases hq : q
+  . left
+    intro hp
+    exact hq
+  . right
+    intro hp
+    specialize h hp
+    rcases h with (hq' | hr)
+    . contradiction
+    . exact hr
 
 end disjunction
 
@@ -221,20 +238,29 @@ section negation
 
 -- La proposition False est fausse (duh)
 theorem not_false : ¬ False := by
-  sorry
+  intro h
+  contradiction
+  -- ou : exact h
 
 -- De False on peut déduire ce qu'on veut
 theorem false_elim : False → p := by
-  sorry
+  intro h
+  contradiction
 
 -- De deux hypothèses contradictoires on peut déduire ce qu'on veut
 theorem contradiction (hp : p) (hnp : ¬ p) : q := by
-  sorry
+  contradiction
 
 -- entraînement : réessayer sans la tactique `contradiction`
 -- (indice : essayer `exfalso`, `specialize`, `apply false_elim`, `have`...)
 example (hp : p) (hnp : ¬ p) : q := by
-  sorry
+  have h := hnp hp
+  exact false_elim h
+
+example (hp : p) (hnp : ¬ p) : q := by
+  exfalso
+  apply hnp
+  exact hp
 
 -- Introduction de la double négation
 theorem not_not_intro (hp : p) : ¬¬p := by
