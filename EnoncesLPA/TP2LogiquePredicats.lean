@@ -13,14 +13,25 @@ section forall_base
 
 -- Démontrer une quantification universelle
 theorem no_contradiction : ∀ x, ¬ (P x ∧ ¬ P x) := by
-  sorry
+  intro x  -- nouveauté !
+  intro h
+  rcases h with ⟨hp, hnp⟩
+  apply hnp
+  exact hp
+  -- ou : contradiction
 
 -- Utiliser une quantification universelle
 example : (∀ x, P x) → P a := by
-  sorry
+  intro h
+  apply h
+  -- ou :
+  -- specialize h a
+  -- exact h
 
 theorem forall_comm : (∀ x, ∀ y, R x y) → ∀ y, ∀ x, R x y := by
-  sorry
+  intro h
+  intro b a
+  apply h
 
 end forall_base
 
@@ -73,11 +84,17 @@ section exists_base
 
 -- Démontrer une propriété existentielle
 example : P a ∨ P b → ∃ x, P x := by
-  sorry
+  intro h
+  rcases h with (ha | hb)
+  . exists a
+  . exists b
 
 -- Utiliser une propriété existentielle
 theorem exists_comm : (∃ x, ∃ y, R x y) → ∃ y, ∃ x, R x y := by
-  sorry
+  intro h
+  obtain ⟨a, b, h⟩ := h
+  exists b
+  exists a
 
 end exists_base
 

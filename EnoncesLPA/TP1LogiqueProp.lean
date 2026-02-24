@@ -346,7 +346,9 @@ section iff
 
 -- Démontrer un "si et seulement si"
 theorem iff_intro (hpq : p → q) (hqp : q → p) : p ↔ q := by
-  sorry
+  constructor
+  . exact hpq
+  . exact hqp
 
 -- Utiliser un "si et seulement si" : sens direct
 theorem iff_direct (h : p ↔ q) (hp : p) : q := by
@@ -355,7 +357,9 @@ theorem iff_direct (h : p ↔ q) (hp : p) : q := by
      - utiliser `apply h.mp`
      - séparer `h` en deux avec `rcases`
      - utiliser `rewrite`, etc. -/
-  sorry
+  apply h.mp
+  -- ou : rewrite [← h]
+  exact hp
 
 -- Utiliser un "si et seulement si" : sens réciproque
 theorem iff_recip (h : p ↔ q) (hq : q) : p := by
@@ -387,7 +391,11 @@ theorem and_comm : p ∧ q ↔ q ∧ p := by
   sorry
 
 theorem and_assoc : p ∧ q ∧ r ↔ (p ∧ q) ∧ r := by
-  sorry
+  constructor
+  . intro h
+    apply and_assoc_1
+    exact h
+  . exact and_assoc_2
 
 theorem and_imp : p ∧ q → r ↔ p → q → r := by
   sorry
