@@ -190,6 +190,19 @@ section buveur
 theorem buveur {dans_le_bar boit : α → Prop}
     (h : ∃ x, dans_le_bar x):
     ∃ x, dans_le_bar x ∧ boit x → ∀ y, dans_le_bar y → boit y := by
-  sorry
+  obtain ⟨germaine, h⟩ := h
+  by_cases htous : ∀ y, dans_le_bar y → boit y
+  . -- cas 1 : tout le monde boit
+    exists germaine
+    intro hg
+    exact htous
+  . -- cas 2 : il n'est pas vrai que tout le monde boit
+    rewrite [not_forall] at htous
+    obtain ⟨gerard, hge⟩ := htous
+    rewrite [not_imp_iff] at hge
+    rcases hge with ⟨hge, hge'⟩
+    exists gerard
+    intro ⟨hge2, hge2'⟩
+    contradiction
 
 end buveur

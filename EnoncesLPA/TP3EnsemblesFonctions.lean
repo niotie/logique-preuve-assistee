@@ -20,12 +20,12 @@ section appartenance  -- ## Relation d'appartenance
 def Mem (s : Set α) (a : α) : Prop :=
   s a
 
--- Incantation pour pouvoir utiliser ∈
+-- Incantation pour pouvoir utiliser ∈ (saisir \in)
 instance : Membership α (Set α) where
   mem := Set.Mem
 
 -- Théorème utilitaire
-theorem mem_def {s : Set α} : x ∈ s ↔ s x := by
+theorem mem_def {x : α} {s : Set α} : x ∈ s ↔ s x := by
   rfl
 
 end appartenance
@@ -37,7 +37,7 @@ section inclusion  -- ## Relation d'inclusion
 def Subset (s₁ s₂ : Set α) :=
   ∀ ⦃a⦄, a ∈ s₁ → a ∈ s₂
 
--- Incantation pour pouvoir utiliser ⊆
+-- Incantation pour pouvoir utiliser ⊆ (saisir \sub)
 instance instSubsetHasSubset : HasSubset (Set α) where
   Subset := Set.Subset
 
@@ -64,14 +64,14 @@ theorem ext_iff {a b : Set α} : (∀ (x : α), x ∈ a ↔ x ∈ b) ↔ a = b :
   . exact ext
   . intro hab x
     rewrite [hab]
-    apply iff_refl
+    exact iff_refl
 
 end egalite
 
 
 section vide_univ  -- ## Ensembles particuliers
 
--- Incantation pour pouvoir utiliser ∅
+-- Incantation pour pouvoir utiliser ∅ (saisir \empty)
 instance : EmptyCollection (Set α) :=
   ⟨fun _ ↦ False⟩
 
@@ -91,7 +91,7 @@ section union  -- ## Union
 def union (s₁ s₂ : Set α) : Set α :=
   fun a ↦ a ∈ s₁ ∨ a ∈ s₂
 
--- Invocation pour utiliser ∪
+-- Invocation pour utiliser ∪ (saisir \union ou \cup)
 instance : Union (Set α) :=
   ⟨union⟩
 
@@ -109,7 +109,7 @@ section intersection  -- ## Intersection
 def inter (s₁ s₂ : Set α) : Set α :=
   fun a ↦ a ∈ s₁ ∧ a ∈ s₂
 
--- Invocation pour utiliser ∩
+-- Invocation pour utiliser ∩ (saisir \inter ou \cap)
 instance : Inter (Set α) :=
   ⟨Set.inter⟩
 
@@ -127,7 +127,7 @@ section complement  -- ## Complémentaire
 def compl (s : Set α) : Set α :=
   fun a ↦ a ∉ s
 
--- Invocation pour utiliser ᶜ
+-- Invocation pour utiliser ᶜ (saisir \compl)
 postfix:1024 "ᶜ" => compl
 
 -- Théorème utilitaire
@@ -143,7 +143,7 @@ section difference  -- ## Différence ensembliste
 def diff (s t : Set α) : Set α :=
   fun a ↦ a ∈ s ∧ a ∉ t
 
--- Invocation pour utiliser \ (attention, saisir \\ !)
+-- Invocation pour utiliser \ (attention, saisir \\ ou \setminus !)
 instance : SDiff (Set α) := ⟨Set.diff⟩
 
 -- Théorème utilitaire
@@ -160,7 +160,7 @@ section parties  -- ## Ensemble des parties (powerset)
 def powerset (s : Set α) : Set (Set α) :=
   fun t ↦ t ⊆ s
 
--- Invocation pour utiliser 𝒫
+-- Invocation pour utiliser 𝒫 (saisir \powerset)
 prefix:1000 "𝒫" => powerset
 
 -- Théorème utilitaire
@@ -209,10 +209,26 @@ section subset  -- ## Propriétés liées à la relation ⊆
 
 @[refl]
 theorem subset_refl : s ⊆ s := by
-  sorry
+  -- rewrite [subset_def]
+  intro a
+  exact imp_refl
+  -- ou :
+  -- intro h
+  -- exact h
 
 theorem subset_antisymm {s t : Set α} (h : s ⊆ t) (h' : t ⊆ s) : s = t := by
-  sorry
+  apply ext
+  intro a
+  constructor
+  . intro hs
+    apply h
+    exact hs
+    -- ou :
+    -- have ht : a ∈ t := h hs
+    -- exact ht
+    -- ou :
+    -- exact h hs
+  . sorry
 
 theorem subset_trans (hrs : r ⊆ s) (hst : s ⊆ t) : r ⊆ t := by
   sorry
@@ -222,13 +238,13 @@ end subset
 
 section singleton  -- ## Propriétés des singletons
 
-theorem mem_singleton_iff : x ∈ ({x'} : Set α) ↔ x = x' := by
+theorem mem_singleton_iff {x x' : α} : x ∈ ({x'} : Set α) ↔ x = x' := by
   sorry
 
-theorem eq_singleton_iff : {x} = ({x'} : Set α) ↔ x = x' := by
+theorem eq_singleton_iff {x x' : α} : {x} = ({x'} : Set α) ↔ x = x' := by
   sorry
 
-theorem sub_singleton_iff : {x} ⊆ ({x'} : Set α) ↔ x = x' := by
+theorem sub_singleton_iff {x x' : α} : {x} ⊆ ({x'} : Set α) ↔ x = x' := by
   sorry
 
 end singleton
