@@ -231,7 +231,31 @@ theorem subset_antisymm {s t : Set α} (h : s ⊆ t) (h' : t ⊆ s) : s = t := b
   . sorry
 
 theorem subset_trans (hrs : r ⊆ s) (hst : s ⊆ t) : r ⊆ t := by
-  sorry
+  intro x hxr
+  -- raisonnement "en arrière"
+  apply hst
+  apply hrs
+  exact hxr
+
+example (hrs : r ⊆ s) (hst : s ⊆ t) : r ⊆ t := by
+  intro x hxr
+  -- raisonnement "en avant"
+  specialize hrs hxr
+  specialize hst hrs
+  exact hst
+
+example (hrs : r ⊆ s) (hst : s ⊆ t) : r ⊆ t := by
+  intro x hxr
+  -- raisonnement "en avant" (autre forme)
+  have hxs : x ∈ s := by
+    apply hrs
+    exact hxr
+  have hxt : x ∈ t := by
+    apply hst
+    exact hxs
+  exact hxt
+
+
 
 end subset
 
@@ -239,10 +263,21 @@ end subset
 section singleton  -- ## Propriétés des singletons
 
 theorem mem_singleton_iff {x x' : α} : x ∈ ({x'} : Set α) ↔ x = x' := by
-  sorry
+  rfl
 
 theorem eq_singleton_iff {x x' : α} : {x} = ({x'} : Set α) ↔ x = x' := by
-  sorry
+  constructor
+  . intro h
+    rewrite [← ext_iff] at h
+    specialize h x
+    rewrite [← mem_singleton_iff]
+    rewrite [← h]
+    rfl
+  . intro h
+    rewrite [h]
+    rfl
+
+
 
 theorem sub_singleton_iff {x x' : α} : {x} ⊆ ({x'} : Set α) ↔ x = x' := by
   sorry
@@ -253,13 +288,28 @@ end singleton
 section union    -- ## Propriétés de l'union
 
 theorem union_empty (s : Set α) : s ∪ ∅ = s := by
-  sorry
+  apply subset_antisymm
+  . intro x h
+    rcases h with (h | h)
+    . exact h
+    . contradiction
+  . intro x h
+    left
+    exact h
 
 theorem union_univ (s : Set α) : s ∪ univ = univ := by
-  sorry
+  apply subset_antisymm
+  . intro x h
+    trivial
+  . intro x _
+    right
+    trivial
 
 theorem union_comm : s ∪ t = t ∪ s := by
-  sorry
+  apply ext
+  intro x
+  rewrite [union_def, or_comm]
+  rfl
 
 theorem union_assoc {r s t : Set α} : r ∪ s ∪ t = r ∪ (s ∪ t) := by
   sorry
