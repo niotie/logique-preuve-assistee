@@ -225,10 +225,10 @@ section singleton  -- ## Propriétés des singletons
 theorem mem_singleton_iff : x ∈ ({x'} : Set α) ↔ x = x' := by
   sorry
 
-theorem eq_singleton_iff : {x} = ({x'} : Set α) ↔ x = x' := by
+theorem sub_singleton_iff : {x} ⊆ ({x'} : Set α) ↔ x = x' := by
   sorry
 
-theorem sub_singleton_iff : {x} ⊆ ({x'} : Set α) ↔ x = x' := by
+theorem eq_singleton_iff : {x} = ({x'} : Set α) ↔ x = x' := by
   sorry
 
 end singleton
