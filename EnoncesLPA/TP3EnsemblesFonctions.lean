@@ -521,11 +521,18 @@ section preimage_image -- ## Pré-image de l'image d'un ensemble
 -- Seul l'un de ces deux thèorèmes est vrai.
 -- Le démontrer, et trouver un contre-exemple pour l'autre.
 
--- theorem sub_preimage_image : s ⊆ f ⁻¹' (f '' s) := by
---   fail
+theorem sub_preimage_image : s ⊆ f ⁻¹' (f '' s) := by
+  intro x
+  intro h
+  rewrite [mem_preimage]
+  rewrite [mem_image]
+  exists x
 
 -- theorem preimage_image_sub : f ⁻¹' (f '' s) ⊆ s := by
---   fail
+--   intro x h
+--   rewrite [mem_preimage] at h
+--   rcases h with ⟨x', h, h'⟩
+--   sorry
 
 end preimage_image
 
@@ -536,10 +543,17 @@ section image_preimage  -- ## Image de la pré-image d'un ensemble
 -- Le démontrer, et trouver un contre-exemple pour l'autre.
 
 -- theorem sub_image_preimage : t ⊆ f '' (f ⁻¹' t) := by
---   fail
+--   intro x h
+--   rewrite [mem_image]
+--   exists y
+--   rewrite [mem_preimage]
+--   sorry
 
--- theorem image_preimage_sub : f '' (f ⁻¹' (t)) ⊆ t := by
---   fail
+theorem image_preimage_sub : f '' (f ⁻¹' (t)) ⊆ t := by
+  intro x h
+  rcases h with ⟨y, hy, hy'⟩
+  rewrite [← hy']
+  exact hy
 
 end image_preimage
 
@@ -639,8 +653,13 @@ section preimage_image  -- ## Retour sur image et préimage
 -- Seuls deux des quatres thèorèmes suivants sont vrais.
 -- Les démontrer, et trouver un contre-exemple pour chacun des deux autres.
 
--- theorem preimage_image_sub_of_inj (h : injective f) : f ⁻¹' (f '' s) ⊆ s := by
---   fail
+theorem preimage_image_sub_of_inj (h : injective f) : f ⁻¹' (f '' s) ⊆ s := by
+  intro x h'
+  rewrite [mem_preimage] at h'
+  rcases h' with ⟨x', hx'1, hx'2⟩
+  specialize h x' x hx'2
+  subst h
+  exact hx'1
 
 -- theorem preimage_image_sub_of_surj (h : surjective f) : f ⁻¹' (f '' s) ⊆ s := by
 --   fail
@@ -648,8 +667,15 @@ section preimage_image  -- ## Retour sur image et préimage
 -- theorem sub_image_preimage_of_inj (h : injective f) : t ⊆ f '' (f ⁻¹' t) := by
 --   fail
 
--- theorem sub_image_preimage_of_surj (h : surjective f) : t ⊆ f '' (f ⁻¹' t) := by
---   fail
+theorem sub_image_preimage_of_surj (h : surjective f) : t ⊆ f '' (f ⁻¹' t) := by
+  intro y h'
+  specialize h y
+  rcases h with ⟨a, ha⟩
+  exists a
+  constructor
+  . subst ha
+    exact h'
+  . exact ha
 
 end preimage_image
 
