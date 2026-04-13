@@ -56,8 +56,8 @@ variable (C : Nat → Prop)
 #check Nat.brecOn
 
 -- Récurrence "complète"
-#check Nat.ibelow
-#check Nat.binductionOn
+-- #check Nat.ibelow
+-- #check Nat.binductionOn
 
 end predefini
 
@@ -112,7 +112,7 @@ theorem pred_succ {m : Nat} : m.succ.pred = m := by
   rewrite [pred]
   sorry
 
-theorem succ_pred (h : m ≠ 0): m.pred.succ = m := by
+theorem succ_pred {m : Nat} (h : m ≠ 0): m.pred.succ = m := by
   -- rewrite [pred]  -- ne fonctionne pas !
   cases m with
   | zero => sorry
