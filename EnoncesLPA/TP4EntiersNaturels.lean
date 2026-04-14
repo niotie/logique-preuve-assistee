@@ -110,13 +110,13 @@ def pred : Nat → Nat
 
 theorem pred_succ {m : Nat} : m.succ.pred = m := by
   rewrite [pred]
-  sorry
+  rfl
 
 theorem succ_pred {m : Nat} (h : m ≠ 0): m.pred.succ = m := by
   -- rewrite [pred]  -- ne fonctionne pas !
   cases m with
-  | zero => sorry
-  | succ m' => sorry
+  | zero => contradiction
+  | succ m' => rewrite[pred]; rfl
 
 end pred
 
@@ -141,45 +141,72 @@ instance : Add Nat where
 
 
 -- Un premier théorème !! Youpi !
-theorem one_plus_one : one + one = two := by
-  sorry
+theorem one_plus_one : add one one = two := by
+  rfl
 
 -- Théorèmes reflétant la définition
 theorem zero_add : zero + n = n := by
-  sorry
-theorem succ_add : m.succ + n = (m + n).succ := by
-  sorry
+  rfl
 
+theorem succ_add : m.succ + n = (m + n).succ := by
+  rfl
+
+#check Nat.succ.injEq
 
 -- Élément neutre à droite
 example : n + zero = n := by
   cases n with
-  | zero => sorry
-  | succ m' => sorry
+  | zero => rfl
+  | succ m' =>
+      rewrite [succ_add]
+      rewrite [Nat.succ.injEq]
+      cases m' with
+      | zero => sorry
+      | succ m'' => sorry
 
 -- Nouvel essai
 theorem add_zero : n + zero = n := by
   induction n with
-  | zero => sorry
-  | succ m' ih => sorry
+  | zero => rfl
+  | succ m' ih =>
+      rewrite [succ_add]
+      rewrite [ih]
+      rfl
 
 -- Commutativité
 example : m + n = n + m := by
   induction m with
   | zero =>
-      rw [add_zero, zero_add]
+      rewrite [add_zero]
+      rewrite [zero_add]
+      rfl
   | succ m' ih =>
-      rw [succ_add, ih]
+      rewrite [succ_add]
+      rewrite [ih]
       -- coincé !
       sorry
 
 -- Nouvel essai : avec un nouveau lemme
 theorem add_succ : m + n.succ = (m + n).succ := by
-  sorry
+  induction m with
+  | zero =>
+      rewrite [zero_add, zero_add]
+      rfl
+  | succ m' ih =>
+      rewrite [succ_add, ih, succ_add]
+      rfl
 
 theorem add_comm : m + n = n + m := by
-  sorry
-
+  induction m with
+  | zero =>
+      rewrite [add_zero]
+      rewrite [zero_add]
+      rfl
+  | succ m' ih =>
+      rewrite [succ_add]
+      rewrite [ih]
+      rewrite [add_succ]
+      rfl
 
 -- Associativité de l'addition
 theorem add_assoc : m + n + k = m + (n + k) := by
