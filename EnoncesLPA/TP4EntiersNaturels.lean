@@ -98,6 +98,8 @@ example : ∀ (m : Nat), m.succ ≠ zero := by
   -- ... on peut prouver que (phi n) pour tout n :
   ∀ t, phi t)
 
+#check @Nat.rec
+
 end peano
 
 
