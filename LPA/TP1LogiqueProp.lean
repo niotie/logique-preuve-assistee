@@ -1,4 +1,4 @@
-namespace Local
+namespace LPA
 set_option linter.unusedVariables false
 
 variable {p q r : Prop}

@@ -16,7 +16,7 @@
     À la question *Do you trust the authors of the files in this folder?* (« Faites-vous confiance aux auteurs des fichiers de ce répertoire ? ») répondez *Yes, I trust the authors* (« Oui, je fais confiance aux auteurs »).
 
 
-3.  Ouvrez le document `EnoncesLPA/TP1LogiqueProp.lean`, VSCode vous embête encore. À la fenêtre surgissante qui s'affiche (*"Lean's version manager Elan is not installed. This means..."*), répondez *"Cancel"* ("Annuler").
+3.  Ouvrez le document `LPA/TP1LogiqueProp.lean`, VSCode vous embête encore. À la fenêtre surgissante qui s'affiche (*"Lean's version manager Elan is not installed. This means..."*), répondez *"Cancel"* ("Annuler").
 
 4.  Patientez pendant que VSCode démarre l'extension Lean, puis cliquez sur le bouton $\forall$ en haut à droite de la fenêtre, et sélectionnez l'option *"Infoview : Toggle Infoview"*, ou saisissez le raccourci `Ctrl-Shift-Enter`.
 

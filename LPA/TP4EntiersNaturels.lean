@@ -1,0 +1,9 @@
+import LPA.TP4EntiersNaturels.«1Definition»
+import LPA.TP4EntiersNaturels.«2Predecessor»
+import LPA.TP4EntiersNaturels.«3Addition»
+import LPA.TP4EntiersNaturels.«4Multiplication»
+import LPA.TP4EntiersNaturels.«5StrictOrder»
+import LPA.TP4EntiersNaturels.«6NonStrictOrder»
+import LPA.TP4EntiersNaturels.Subtraction
+import LPA.TP4EntiersNaturels.StrongInduction
+import LPA.TP4EntiersNaturels.Division

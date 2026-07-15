@@ -1,7 +1,7 @@
-import EnoncesLPA.TP2LogiquePredicats
+import LPA.TP2LogiquePredicats
 
-namespace Local
-set_option linter.unusedVariables false
+namespace LPA
+-- set_option linter.unusedVariables false
 
 universe u
 variable {α β γ : Type u}

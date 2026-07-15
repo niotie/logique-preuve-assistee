@@ -5,7 +5,7 @@ package enoncesLPA
 -- where
 --   version := v!"0.1.0"
 
-lean_lib «EnoncesLPA» where
+lean_lib «LPA» where
   -- add library configuration options here
 
 -- @[default_target]

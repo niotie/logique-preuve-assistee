@@ -1,6 +1,6 @@
-import EnoncesLPA.TP1LogiqueProp
+import LPA.TP1LogiqueProp
 
-namespace Local
+namespace LPA
 set_option linter.unusedVariables false
 
 variable {α : Type}         -- un type d'éléments
